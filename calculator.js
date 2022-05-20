@@ -15,12 +15,13 @@ function divide (a,b) {
     return a/b;
 }
 
+const screen = document.querySelector('#screen');
+
 screen.textContent = 0;
 
 // clear function
 window.addEventListener('click', function(e) {
     if (e.target.id==='clear'){
-        console.log(numbers);
         screen.textContent = 0;
     }
 });
@@ -28,9 +29,9 @@ window.addEventListener('click', function(e) {
 const numbers = document.querySelectorAll('.numbers');
 
 // digit function
-window.addEventListener('click', function(e) {
-    if (e.target.className==='numbers'){
-        console.log(numbers);
-        // screen.textContent = dnumbers.textContent;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.className==='numbers'){
+//         console.log(numbers);
+//         screen.textContent = numbers.textContent;
+//     }
+// });
