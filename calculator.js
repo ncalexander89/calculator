@@ -99,8 +99,9 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
-        displayValue = displayValue + '+';
-        screenSmall.textContent= displayValue;
+        // displayValue = displayValue;
+        screenSmall.textContent= displayValue +'+';
+        
     }
 });
 
