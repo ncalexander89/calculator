@@ -24,6 +24,8 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='clear'){
         screen.textContent = 0;
         displayValue = 0;
+        screenSmall.textContent = '';
+
     }
 });
 
@@ -98,7 +100,7 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
         displayValue = displayValue + '+';
-        screen.textContent= displayValue;
+        screenSmall.textContent= displayValue;
     }
 });
 
@@ -109,6 +111,9 @@ window.addEventListener('click', function(e) {
 });
 
 screen.textContent = displayValue;
+
+screenSmall.textContent = '';
+
 
 // Create the functions that populate the display when you click the number buttons… you should be storing the ‘display value’ 
 // in a variable somewhere for use in the next step.
