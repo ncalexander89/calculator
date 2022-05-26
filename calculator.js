@@ -1,6 +1,13 @@
+// const operate = function (firstNumber, secondNumber){
+
+// }
+
 //operator functions
-function add (firstNumber,secondNumber) {
-    return firstNumber + secondNumber;
+const add = function (firstNumber,secondNumber) {
+    displayValue=0;
+    secondNumber=firstNumber;
+    console.log(secondNumber);
+    return;
 }
 
 function subtract (firstNumber,secondNumber) {
@@ -17,8 +24,6 @@ function divide (firstNumber,secondNumber) {
 
 const screen = document.querySelector('#screen');
 
-// screen.textContent = [];
-
 // Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
 
 // clear function
@@ -26,6 +31,7 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='clear'){
         screen.textContent = 0;
         displayValue = 0;
+        firstNumber=0;
         screenSmall.textContent = '';
     }
 });
@@ -96,12 +102,8 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='9'){
-        if (typeof firstNumber==='number') {
-        displayValue=0;
         displayValue = 9 + 10*displayValue;
         screen.textContent= displayValue;
-        secondNumber=displayValue;
-    }
     }
 });
 
@@ -109,6 +111,7 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
         screenSmall.textContent= displayValue +'+';
         firstNumber=displayValue;
+        add(firstNumber);
     }
 });
 
@@ -118,9 +121,9 @@ window.addEventListener('click', function(e) {
     }
 });
 
-screen.textContent = displayValue;
+// screen.textContent = displayValue;
 
-screenSmall.textContent = '';
+// screenSmall.textContent = '';
 
 
 // Create the functions that populate the display when you click the number buttons… you should be storing the ‘display value’ 
