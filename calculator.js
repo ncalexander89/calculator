@@ -1,23 +1,25 @@
 //operator functions
-function add (a,b) {
-    return a+b;
+function add (firstNumber,secondNumber) {
+    return firstNumber + secondNumber;
 }
 
-function subtract (a,b) {
-    return a-b;
+function subtract (firstNumber,secondNumber) {
+    return firstNumber - secondNumber;
 }
 
-function multiply (a,b) {
-    return a*b;
+function multiply (firstNumber,secondNumber) {
+    return firstNumber * secondNumber;
 }
 
-function divide (a,b) {
-    return a/b;
+function divide (firstNumber,secondNumber) {
+    return firstNumber/secondNumber;
 }
 
 const screen = document.querySelector('#screen');
 
-screen.textContent = [];
+// screen.textContent = [];
+
+// Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
 
 // clear function
 window.addEventListener('click', function(e) {
@@ -25,11 +27,13 @@ window.addEventListener('click', function(e) {
         screen.textContent = 0;
         displayValue = 0;
         screenSmall.textContent = '';
-
     }
 });
 
 let displayValue = 0;
+
+let firstNumber=0;
+let secondNumber=0;
 
 const numbers = document.querySelectorAll('.numbers');
 
@@ -52,7 +56,7 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='3'){
         displayValue = 3 + 10*displayValue;
         screen.textContent= displayValue;
-    }
+}
 });
 
 window.addEventListener('click', function(e) {
@@ -92,16 +96,19 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='9'){
+        if (typeof firstNumber==='number') {
+        displayValue=0;
         displayValue = 9 + 10*displayValue;
         screen.textContent= displayValue;
+        secondNumber=displayValue;
+    }
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
-        // displayValue = displayValue;
         screenSmall.textContent= displayValue +'+';
-        
+        firstNumber=displayValue;
     }
 });
 
