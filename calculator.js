@@ -4,8 +4,8 @@
 
 //operator functions
 const add = function (firstNumber,secondNumber) {
-    displayValue=0;
-    secondNumber=firstNumber;
+    // displayValue=0;
+    console.log(firstNumber);
     console.log(secondNumber);
     return;
 }
@@ -38,8 +38,8 @@ window.addEventListener('click', function(e) {
 
 let displayValue = 0;
 
-let firstNumber=0;
-let secondNumber=0;
+let firstNumber='';
+let secondNumber='';
 
 const numbers = document.querySelectorAll('.numbers');
 
@@ -109,9 +109,15 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
+        if (firstNumber>0) {
+            screenSmall.textContent= displayValue +'+';
+            secondNumber=displayValue;
+            // displayValue=0;
+            add(firstNumber,secondNumber)
+        }
         screenSmall.textContent= displayValue +'+';
         firstNumber=displayValue;
-        add(firstNumber);
+        displayValue=0;
     }
 });
 
