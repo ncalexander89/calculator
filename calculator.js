@@ -7,8 +7,12 @@ const add = function (firstNumber,secondNumber) {
     // displayValue=0;
     console.log(firstNumber);
     console.log(secondNumber);
-    return;
+    screen.textContent = firstNumber+secondNumber;
+    firstNumber=screen.textContent;
+    console.log(firstNumber);
 }
+
+
 
 function subtract (firstNumber,secondNumber) {
     return firstNumber - secondNumber;
@@ -110,12 +114,11 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
         if (firstNumber>0) {
-            screenSmall.textContent= displayValue +'+';
+            // screenSmall.textContent= `${firstNumber}+${displayValue}+`;
             secondNumber=displayValue;
-            // displayValue=0;
             add(firstNumber,secondNumber)
         }
-        screenSmall.textContent= displayValue +'+';
+        screenSmall.textContent= `${displayValue} + ${firstNumber}`;
         firstNumber=displayValue;
         displayValue=0;
     }
