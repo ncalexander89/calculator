@@ -8,7 +8,7 @@ const add = function (firstNumber,secondNumber) {
     console.log(firstNumber);
     console.log(secondNumber);
     screen.textContent = firstNumber+secondNumber;
-    firstNumber=screen.textContent;
+    firstNumber= (firstNumber+secondNumber);
     console.log(firstNumber);
 }
 
@@ -113,7 +113,7 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
-        if (firstNumber>0) {
+        if (!firstNumber!=='') {
             // screenSmall.textContent= `${firstNumber}+${displayValue}+`;
             secondNumber=displayValue;
             add(firstNumber,secondNumber)
