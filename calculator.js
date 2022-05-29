@@ -1,7 +1,9 @@
 // const operate = function (firstNumber, secondNumber){
+    let firstNumber='';
+    let secondNumber='';
 
 // }
-
+const operate = function() {
 //operator functions
 const add = function (firstNumber,secondNumber) {
     // displayValue=0;
@@ -10,6 +12,7 @@ const add = function (firstNumber,secondNumber) {
     screen.textContent = firstNumber+secondNumber;
     firstNumber= (firstNumber+secondNumber);
     console.log(firstNumber);
+    return;
 }
 
 
@@ -42,8 +45,7 @@ window.addEventListener('click', function(e) {
 
 let displayValue = 0;
 
-let firstNumber='';
-let secondNumber='';
+
 
 const numbers = document.querySelectorAll('.numbers');
 
@@ -59,6 +61,7 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='2'){
         displayValue = 2 + 10*displayValue;
         screen.textContent= displayValue;
+
     }
 });
 
@@ -73,6 +76,8 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='4'){
         displayValue = 4 + 10*displayValue;
         screen.textContent= displayValue;
+        console.log(firstNumber);
+
     }
 });
 
@@ -113,14 +118,30 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
-        if (!firstNumber!=='') {
+        console.log(secondNumber);
+        console.log(firstNumber);        
+
+        if (firstNumber!=='') {
             // screenSmall.textContent= `${firstNumber}+${displayValue}+`;
             secondNumber=displayValue;
+            console.log(secondNumber);
+
             add(firstNumber,secondNumber)
-        }
+        } else if (firstNumber==='') {
         screenSmall.textContent= `${displayValue} + ${firstNumber}`;
         firstNumber=displayValue;
         displayValue=0;
+        console.log(firstNumber);        
+
+        }
+        displayValue=0;
+
+    }
+});
+
+window.addEventListener('click', function(e) {
+    if (e.target.id==='='){
+        screen.textContent= displayValue;
     }
 });
 
@@ -129,6 +150,11 @@ window.addEventListener('click', function(e) {
         screen.textContent= displayValue;
     }
 });
+
+
+}
+
+operate();
 
 // screen.textContent = displayValue;
 
