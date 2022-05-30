@@ -1,32 +1,21 @@
-// const operate = function (firstNumber, secondNumber){
-    let firstNumber='';
-    let secondNumber='';
-
-// }
-const operate = function() {
 //operator functions
 const add = function (firstNumber,secondNumber) {
-    // displayValue=0;
-    console.log(firstNumber);
-    console.log(secondNumber);
     screen.textContent = firstNumber+secondNumber;
-    firstNumber= (firstNumber+secondNumber);
-    console.log(firstNumber);
-    return;
+    firstNumber= screen.textContent;
 }
-
-
-
-function subtract (firstNumber,secondNumber) {
-    return firstNumber - secondNumber;
+const subtract = function (firstNumber,secondNumber) {
+    screen.textContent = firstNumber-secondNumber;
+    firstNumber= screen.textContent;
 }
 
 function multiply (firstNumber,secondNumber) {
-    return firstNumber * secondNumber;
+    screen.textContent = firstNumber*secondNumber;
+    firstNumber= screen.textContent;
 }
 
 function divide (firstNumber,secondNumber) {
-    return firstNumber/secondNumber;
+    screen.textContent = firstNumber*secondNumber;
+    firstNumber= screen.textContent;
 }
 
 const screen = document.querySelector('#screen');
@@ -38,18 +27,27 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='clear'){
         screen.textContent = 0;
         displayValue = 0;
-        firstNumber=0;
+        firstNumber='';
+        secondNumber='';
         screenSmall.textContent = '';
     }
 });
 
 let displayValue = 0;
-
-
+let firstNumber='';
+let secondNumber='';
+let operate='';
 
 const numbers = document.querySelectorAll('.numbers');
 
 // digit function
+window.addEventListener('click', function(e) {
+    if (e.target.id==='0'){
+        displayValue = 0 + 10*displayValue;
+        screen.textContent= displayValue;
+    }
+});
+
 window.addEventListener('click', function(e) {
     if (e.target.id==='1'){
         displayValue = 1 + 10*displayValue;
@@ -61,7 +59,6 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='2'){
         displayValue = 2 + 10*displayValue;
         screen.textContent= displayValue;
-
     }
 });
 
@@ -76,8 +73,6 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='4'){
         displayValue = 4 + 10*displayValue;
         screen.textContent= displayValue;
-        console.log(firstNumber);
-
     }
 });
 
@@ -118,30 +113,57 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
-        console.log(secondNumber);
-        console.log(firstNumber);        
-
         if (firstNumber!=='') {
-            // screenSmall.textContent= `${firstNumber}+${displayValue}+`;
             secondNumber=displayValue;
-            console.log(secondNumber);
-
-            add(firstNumber,secondNumber)
-        } else if (firstNumber==='') {
+            add(firstNumber,secondNumber);
+        }
+        else if (firstNumber==='') {
         screenSmall.textContent= `${displayValue} + ${firstNumber}`;
         firstNumber=displayValue;
         displayValue=0;
-        console.log(firstNumber);        
-
         }
-        displayValue=0;
-
     }
 });
 
 window.addEventListener('click', function(e) {
-    if (e.target.id==='='){
-        screen.textContent= displayValue;
+    if (e.target.id==='-'){
+        if (firstNumber!=='') {
+            secondNumber=displayValue;
+            subtract(firstNumber,secondNumber);
+        }
+        else if (firstNumber==='') {
+        screenSmall.textContent= `${displayValue} - ${firstNumber}`;
+        firstNumber=displayValue;
+        displayValue=0;
+        }
+    }
+});
+
+window.addEventListener('click', function(e) {
+    if (e.target.id==='x'){
+        if (firstNumber!=='') {
+            secondNumber=displayValue;
+            multiply(firstNumber,secondNumber);
+        }
+        else if (firstNumber==='') {
+        screenSmall.textContent= `${displayValue} x ${firstNumber}`;
+        firstNumber=displayValue;
+        displayValue=0;
+        }
+    }
+});
+
+window.addEventListener('click', function(e) {
+    if (e.target.id==='/'){
+        if (firstNumber!=='') {
+            secondNumber=displayValue;
+            divide(firstNumber,secondNumber);
+        }
+        else if (firstNumber==='') {
+        screenSmall.textContent= `${displayValue} / ${firstNumber}`;
+        firstNumber=displayValue;
+        displayValue=0;
+        }
     }
 });
 
@@ -151,15 +173,19 @@ window.addEventListener('click', function(e) {
     }
 });
 
+window.addEventListener('click', function(e) {
+    if (e.target.id==='='){
+        screen.textContent= displayValue;
+        if (firstNumber!=='') {
+            secondNumber=displayValue;
+            add(firstNumber,secondNumber);
+        }
+        firstNumber='';
+        secondNumber='';
+        displayValue = 0;
 
-}
-
-operate();
-
-// screen.textContent = displayValue;
-
-// screenSmall.textContent = '';
-
+    }
+});
 
 // Create the functions that populate the display when you click the number buttons… you should be storing the ‘display value’ 
 // in a variable somewhere for use in the next step.
