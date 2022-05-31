@@ -1,7 +1,14 @@
 //operator functions
-const add = function (firstNumber,secondNumber) {
-    screen.textContent = firstNumber+secondNumber;
+let displayValue = 0;
+let firstNumber='';
+let secondNumber='';
+let operate='';
+
+
+const add = function (a,b) {
+    screen.textContent = a+b;
     firstNumber= screen.textContent;
+    // return firstNumber;
 }
 const subtract = function (firstNumber,secondNumber) {
     screen.textContent = firstNumber-secondNumber;
@@ -33,10 +40,7 @@ window.addEventListener('click', function(e) {
     }
 });
 
-let displayValue = 0;
-let firstNumber='';
-let secondNumber='';
-let operate='';
+
 
 const numbers = document.querySelectorAll('.numbers');
 
@@ -113,6 +117,7 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
+        operate = '+';
         if (firstNumber!=='') {
             secondNumber=displayValue;
             add(firstNumber,secondNumber);
@@ -127,6 +132,7 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='-'){
+        operate='-';
         if (firstNumber!=='') {
             secondNumber=displayValue;
             subtract(firstNumber,secondNumber);
@@ -141,6 +147,7 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='x'){
+        operate = 'x';
         if (firstNumber!=='') {
             secondNumber=displayValue;
             multiply(firstNumber,secondNumber);
@@ -155,6 +162,7 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='/'){
+        operate='/';
         if (firstNumber!=='') {
             secondNumber=displayValue;
             divide(firstNumber,secondNumber);
@@ -178,7 +186,15 @@ window.addEventListener('click', function(e) {
         screen.textContent= displayValue;
         if (firstNumber!=='') {
             secondNumber=displayValue;
+            if (operate==='+'){
             add(firstNumber,secondNumber);
+            } else if (operate==='x'){
+                multiply(firstNumber,secondNumber);
+            } else if (operate==='/'){
+            divide(firstNumber,secondNumber);
+            }else if (operate==='-'){
+            subtract(firstNumber,secondNumber);
+            }
         }
         firstNumber='';
         secondNumber='';
@@ -186,6 +202,7 @@ window.addEventListener('click', function(e) {
 
     }
 });
+
 
 // Create the functions that populate the display when you click the number buttons… you should be storing the ‘display value’ 
 // in a variable somewhere for use in the next step.
