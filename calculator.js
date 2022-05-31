@@ -1,28 +1,46 @@
 //operator functions
-let displayValue = 0;
+let storedValue = 0;
 let firstNumber='';
 let secondNumber='';
 let operate='';
 
 
+
 const add = function (a,b) {
     screen.textContent = a+b;
-    firstNumber= screen.textContent;
-    // return firstNumber;
-}
-const subtract = function (firstNumber,secondNumber) {
-    screen.textContent = firstNumber-secondNumber;
-    firstNumber= screen.textContent;
+    secondNumber= Number(screen.textContent);
+    firstNumber='';
+    storedValue=0;
+    return;
 }
 
-function multiply (firstNumber,secondNumber) {
-    screen.textContent = firstNumber*secondNumber;
-    firstNumber= screen.textContent;
+const subtract = function (a,b) {
+    screen.textContent = a-b;
+    secondNumber= Number(screen.textContent);
+    firstNumber='';
+    storedValue=0;
+    return;
 }
 
-function divide (firstNumber,secondNumber) {
-    screen.textContent = firstNumber/secondNumber;
-    firstNumber= screen.textContent;
+function multiply (a,b) {
+    screen.textContent = a*b;
+    secondNumber= Number(screen.textContent);
+    firstNumber='';
+    storedValue=0;
+    return;
+}
+
+function divide (a,b) {
+    if (b===0) {
+        screen.textContent = 'Fuck you doing m8';
+        screenSmall.textContent='';
+        return;
+    } 
+    screen.textContent = a/b;
+    secondNumber= Number(screen.textContent);
+    firstNumber='';
+    storedValue=0;
+    return;
 }
 
 const screen = document.querySelector('#screen');
@@ -33,7 +51,7 @@ const screen = document.querySelector('#screen');
 window.addEventListener('click', function(e) {
     if (e.target.id==='clear'){
         screen.textContent = 0;
-        displayValue = 0;
+        storedValue = 0;
         firstNumber='';
         secondNumber='';
         screenSmall.textContent = '';
@@ -47,71 +65,71 @@ const numbers = document.querySelectorAll('.numbers');
 // digit function
 window.addEventListener('click', function(e) {
     if (e.target.id==='0'){
-        displayValue = 0 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 0 + 10*storedValue;
+        screen.textContent= storedValue;
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='1'){
-        displayValue = 1 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 1 + 10*storedValue;
+        screen.textContent= storedValue;
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='2'){
-        displayValue = 2 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 2 + 10*storedValue;
+        screen.textContent= storedValue;
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='3'){
-        displayValue = 3 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 3 + 10*storedValue;
+        screen.textContent= storedValue;
 }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='4'){
-        displayValue = 4 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 4 + 10*storedValue;
+        screen.textContent= storedValue;
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='5'){
-        displayValue = 5 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 5 + 10*storedValue;
+        screen.textContent= storedValue;
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='6'){
-        displayValue = 6 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 6 + 10*storedValue;
+        screen.textContent= storedValue;
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='7'){
-        displayValue = 7 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 7 + 10*storedValue;
+        screen.textContent= storedValue;
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='8'){
-        displayValue = 8 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 8 + 10*storedValue;
+        screen.textContent= storedValue;
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='9'){
-        displayValue = 9 + 10*displayValue;
-        screen.textContent= displayValue;
+        storedValue = 9 + 10*storedValue;
+        screen.textContent= storedValue;
     }
 });
 
@@ -119,13 +137,15 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
         operate = '+';
         if (firstNumber!=='') {
-            secondNumber=displayValue;
+            secondNumber=storedValue;
             add(firstNumber,secondNumber);
-        }
-        else if (firstNumber==='') {
-        screenSmall.textContent= `${displayValue} + ${firstNumber}`;
-        firstNumber=displayValue;
-        displayValue=0;
+        } else if (firstNumber==='' && secondNumber==='') {
+        screenSmall.textContent= `${storedValue} + ${firstNumber}`;
+        firstNumber=storedValue;
+        storedValue=0;
+        } else if (firstNumber==='' && secondNumber!=='') {
+            firstNumber=storedValue;
+            add(firstNumber,secondNumber);
         }
     }
 });
@@ -134,13 +154,15 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='-'){
         operate='-';
         if (firstNumber!=='') {
-            secondNumber=displayValue;
+            secondNumber=storedValue;
             subtract(firstNumber,secondNumber);
-        }
-        else if (firstNumber==='') {
-        screenSmall.textContent= `${displayValue} - ${firstNumber}`;
-        firstNumber=displayValue;
-        displayValue=0;
+        } else if (firstNumber==='' && secondNumber==='') {
+        screenSmall.textContent= `${storedValue} - ${firstNumber}`;
+        firstNumber=storedValue;
+        storedValue=0;
+        } else if (firstNumber==='' && secondNumber!=='') {
+            firstNumber=storedValue;
+            subtract(firstNumber,secondNumber);
         }
     }
 });
@@ -149,13 +171,15 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='x'){
         operate = 'x';
         if (firstNumber!=='') {
-            secondNumber=displayValue;
+            secondNumber=storedValue;
             multiply(firstNumber,secondNumber);
-        }
-        else if (firstNumber==='') {
-        screenSmall.textContent= `${displayValue} x ${firstNumber}`;
-        firstNumber=displayValue;
-        displayValue=0;
+        } else if (firstNumber==='' && secondNumber==='') {
+        screenSmall.textContent= `${storedValue} x ${firstNumber}`;
+        firstNumber=storedValue;
+        storedValue=0;
+        } else if (firstNumber==='' && secondNumber!=='') {
+            firstNumber=storedValue;
+            multiply(firstNumber,secondNumber);
         }
     }
 });
@@ -164,28 +188,30 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='/'){
         operate='/';
         if (firstNumber!=='') {
-            secondNumber=displayValue;
+            secondNumber=storedValue;
             divide(firstNumber,secondNumber);
-        }
-        else if (firstNumber==='') {
-        screenSmall.textContent= `${displayValue} / ${firstNumber}`;
-        firstNumber=displayValue;
-        displayValue=0;
+        } else if (firstNumber==='' && secondNumber==='') {
+        screenSmall.textContent= `${storedValue} / ${firstNumber}`;
+        firstNumber=storedValue;
+        storedValue=0;
+        } else if (firstNumber==='' && secondNumber!=='') {
+            firstNumber=storedValue;
+            divide(firstNumber,secondNumber);
         }
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='del'){
-        screen.textContent= displayValue;
+        screen.textContent= storedValue;
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='='){
-        screen.textContent= displayValue;
+        screen.textContent= storedValue;
         if (firstNumber!=='') {
-            secondNumber=displayValue;
+            secondNumber=storedValue;
             if (operate==='+'){
             add(firstNumber,secondNumber);
             } else if (operate==='x'){
@@ -198,7 +224,7 @@ window.addEventListener('click', function(e) {
         }
         firstNumber='';
         secondNumber='';
-        displayValue = 0;
+        storedValue = 0;
 
     }
 });
@@ -228,9 +254,11 @@ window.addEventListener('click', function(e) {
 // operator (-).
 
 // You should round answers with long decimals so that they don’t overflow the screen.
+
 // Pressing = before entering all of the numbers or an operator could cause problems!
 // Pressing “clear” should wipe out any existing data.. make sure the user is really starting fresh after pressing “clear”
 // Display a snarky error message if the user tries to divide by 0… don’t let it crash your calculator!
+
 // EXTRA CREDIT: Users can get floating point numbers if they do the math required to get one, but they can’t type them in yet.
 //  Add a . button and let users input decimals! Make sure you don’t let them type more than one though: 12.3.56.5. 
 //  It is hard to do math on these numbers. (disable the decimal button if there’s already one in the display)
