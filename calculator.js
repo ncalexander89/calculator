@@ -1,4 +1,4 @@
-//operator functions
+//initial conditions
 let storedValue = 0;
 let firstNumber='';
 let secondNumber='';
@@ -62,76 +62,85 @@ window.addEventListener('click', function(e) {
     }
 });
 
+let i=0;
+window.addEventListener('click', function(e) {
+      for( i=0; i<10; i++) {
+    if (e.target.id==i){
+        storedValue = i + 10*storedValue;
+        screen.textContent= storedValue;
+        }
+      }
+});
 // Button event listeners
-window.addEventListener('click', function(e) {
-    if (e.target.id==='0'){
-        storedValue = 0 + 10*storedValue;
-        screen.textContent= storedValue;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='0'){
+//         storedValue = 0 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
 
-window.addEventListener('click', function(e) {
-    if (e.target.id==='1'){
-        storedValue = 1 + 10*storedValue;
-        screen.textContent= storedValue;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='1'){
+//         storedValue = 1 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
 
-window.addEventListener('click', function(e) {
-    if (e.target.id==='2'){
-        storedValue = 2 + 10*storedValue;
-        screen.textContent= storedValue;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='2'){
+//         storedValue = 2 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
 
-window.addEventListener('click', function(e) {
-    if (e.target.id==='3'){
-        storedValue = 3 + 10*storedValue;
-        screen.textContent= storedValue;
-}
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='3'){
+//         storedValue = 3 + 10*storedValue;
+//         screen.textContent= storedValue;
+// }
+// });
 
-window.addEventListener('click', function(e) {
-    if (e.target.id==='4'){
-        storedValue = 4 + 10*storedValue;
-        screen.textContent= storedValue;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='4'){
+//         storedValue = 4 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
 
-window.addEventListener('click', function(e) {
-    if (e.target.id==='5'){
-        storedValue = 5 + 10*storedValue;
-        screen.textContent= storedValue;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='5'){
+//         storedValue = 5 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
 
-window.addEventListener('click', function(e) {
-    if (e.target.id==='6'){
-        storedValue = 6 + 10*storedValue;
-        screen.textContent= storedValue;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='6'){
+//         storedValue = 6 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
 
-window.addEventListener('click', function(e) {
-    if (e.target.id==='7'){
-        storedValue = 7 + 10*storedValue;
-        screen.textContent= storedValue;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='7'){
+//         storedValue = 7 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
 
-window.addEventListener('click', function(e) {
-    if (e.target.id==='8'){
-        storedValue = 8 + 10*storedValue;
-        screen.textContent= storedValue;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='8'){
+//         storedValue = 8 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
 
-window.addEventListener('click', function(e) {
-    if (e.target.id==='9'){
-        storedValue = 9 + 10*storedValue;
-        screen.textContent= storedValue;
-    }
-});
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='9'){
+//         storedValue = 9 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
