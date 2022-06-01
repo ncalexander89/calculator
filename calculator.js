@@ -4,8 +4,11 @@ let firstNumber='';
 let secondNumber='';
 let operate='';
 
+//DOM element
+const screen = document.querySelector('#screen');
+const numbers = document.querySelectorAll('.numbers');
 
-
+//addition operator
 const add = function (a,b) {
     screen.textContent = a+b;
     secondNumber= Number(screen.textContent);
@@ -14,6 +17,7 @@ const add = function (a,b) {
     return;
 }
 
+//subtraction operator
 const subtract = function (a,b) {
     screen.textContent = a-b;
     secondNumber= Number(screen.textContent);
@@ -22,6 +26,7 @@ const subtract = function (a,b) {
     return;
 }
 
+//multiplication operator
 function multiply (a,b) {
     screen.textContent = a*b;
     secondNumber= Number(screen.textContent);
@@ -30,7 +35,9 @@ function multiply (a,b) {
     return;
 }
 
+//division operator
 function divide (a,b) {
+    //warning if divide by 0;
     if (b===0) {
         screen.textContent = 'Fuck you doing m8';
         screenSmall.textContent='';
@@ -43,11 +50,7 @@ function divide (a,b) {
     return;
 }
 
-const screen = document.querySelector('#screen');
-
-// Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
-
-// clear function
+// Clear function resets everything
 window.addEventListener('click', function(e) {
     if (e.target.id==='clear'){
         screen.textContent = 0;
@@ -55,14 +58,11 @@ window.addEventListener('click', function(e) {
         firstNumber='';
         secondNumber='';
         screenSmall.textContent = '';
+        operate = '';
     }
 });
 
-
-
-const numbers = document.querySelectorAll('.numbers');
-
-// digit function
+// Button event listeners
 window.addEventListener('click', function(e) {
     if (e.target.id==='0'){
         storedValue = 0 + 10*storedValue;
@@ -136,16 +136,17 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
         operate = '+';
-        //second
-        if (firstNumber!=='') {
-            secondNumber=storedValue;
-            add(firstNumber,secondNumber);
 
             //first
-        } else if (firstNumber==='' && secondNumber==='') {
-        screenSmall.textContent= `${storedValue} + ${firstNumber}`;
-        firstNumber=storedValue;
-        storedValue=0;
+        if (firstNumber==='' && secondNumber==='') {
+            screenSmall.textContent= `${storedValue} + ${firstNumber}`;
+            firstNumber=storedValue;
+            storedValue=0;
+
+        //second
+        } else if (firstNumber!=='') {
+            secondNumber=storedValue;
+            add(firstNumber,secondNumber);
 
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
@@ -159,16 +160,16 @@ window.addEventListener('click', function(e) {
     if (e.target.id==='-'){
         operate='-';
         
+            //first
+        if (firstNumber==='' && secondNumber==='') {
+            screenSmall.textContent= `${storedValue} - ${firstNumber}`;
+            firstNumber=storedValue;
+            storedValue=0;
+
         //second
-        if (firstNumber!=='') {
+        } else if (firstNumber!=='') {
             secondNumber=storedValue;
             subtract(firstNumber,secondNumber);
-
-            //first
-        } else if (firstNumber==='' && secondNumber==='') {
-        screenSmall.textContent= `${storedValue} - ${firstNumber}`;
-        firstNumber=storedValue;
-        storedValue=0;
 
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
@@ -181,13 +182,19 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='x'){
         operate = 'x';
-        if (firstNumber!=='') {
-            secondNumber=storedValue;
-            multiply(firstNumber,secondNumber);
-        } else if (firstNumber==='' && secondNumber==='') {
+
+        //first
+        if (firstNumber==='' && secondNumber==='') {
         screenSmall.textContent= `${storedValue} x ${firstNumber}`;
         firstNumber=storedValue;
         storedValue=0;
+
+        //second
+        } else if (firstNumber!=='') {
+            secondNumber=storedValue;
+            multiply(firstNumber,secondNumber);
+
+        //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
             multiply(firstNumber,secondNumber);
@@ -198,13 +205,19 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='/'){
         operate='/';
-        if (firstNumber!=='') {
-            secondNumber=storedValue;
-            divide(firstNumber,secondNumber);
-        } else if (firstNumber==='' && secondNumber==='') {
+
+        //first
+        if (firstNumber==='' && secondNumber==='') {
         screenSmall.textContent= `${storedValue} / ${firstNumber}`;
         firstNumber=storedValue;
         storedValue=0;
+
+        //second
+        } else if (firstNumber!=='') {
+            secondNumber=storedValue;
+            divide(firstNumber,secondNumber);
+
+        //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
             divide(secondNumber,firstNumber);
@@ -212,12 +225,15 @@ window.addEventListener('click', function(e) {
     }
 });
 
+
+//need to work on delete button
 window.addEventListener('click', function(e) {
     if (e.target.id==='del'){
         screen.textContent= storedValue;
     }
 });
 
+//need to fix double =='s
 let count = 0;
 window.addEventListener('click', function(e) {
     if (e.target.id==='='){
@@ -228,6 +244,22 @@ window.addEventListener('click', function(e) {
         // }
 
         screen.textContent= storedValue;
+
+        //first
+        if (firstNumber!=='') {
+            secondNumber=storedValue;
+            if (operate==='+'){
+                add(firstNumber,secondNumber);
+            } else if (operate==='x'){
+                screen.textContent= firstNumber * secondNumber;
+            } else if (operate==='/'){
+                screen.textContent= firstNumber / secondNumber;
+            } else if (operate==='-'){
+                subtract(firstNumber,secondNumber);
+            }
+        }
+
+        //second
         if (firstNumber==='') {
             if (operate === '+') {
                 screen.textContent= storedValue + secondNumber;
@@ -242,22 +274,10 @@ window.addEventListener('click', function(e) {
                 screen.textContent= secondNumber / storedValue;
             }
         }
-        if (firstNumber!=='') {
-            secondNumber=storedValue;
-            if (operate==='+'){
-            add(firstNumber,secondNumber);
-            } else if (operate==='x'){
-                multiply(firstNumber,secondNumber);
-            } else if (operate==='/'){
-            divide(firstNumber,secondNumber);
-            }else if (operate==='-'){
-            subtract(firstNumber,secondNumber);
-            }
-        }
+        //resets
         firstNumber='';
         secondNumber='';
         storedValue = 0;
-
     }
 });
 
