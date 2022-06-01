@@ -37,9 +37,9 @@ function multiply (a,b) {
 
 //division operator
 function divide (a,b) {
-    //warning if divide by 0;
+    //warning if divide by 0; need to fix
     if (b===0) {
-        screen.textContent = 'Fuck you doing m8';
+        screen.textContent = 'Man u crazay';
         screenSmall.textContent='';
         return;
     } 
@@ -62,85 +62,15 @@ window.addEventListener('click', function(e) {
     }
 });
 
-let i=0;
 window.addEventListener('click', function(e) {
-      for( i=0; i<10; i++) {
-    if (e.target.id==i){
+    for( i=0; i<10; i++) {
+        if (e.target.id==i){
         storedValue = i + 10*storedValue;
         screen.textContent= storedValue;
         }
-      }
+    }
 });
-// Button event listeners
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='0'){
-//         storedValue = 0 + 10*storedValue;
-//         screen.textContent= storedValue;
-//     }
-// });
 
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='1'){
-//         storedValue = 1 + 10*storedValue;
-//         screen.textContent= storedValue;
-//     }
-// });
-
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='2'){
-//         storedValue = 2 + 10*storedValue;
-//         screen.textContent= storedValue;
-//     }
-// });
-
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='3'){
-//         storedValue = 3 + 10*storedValue;
-//         screen.textContent= storedValue;
-// }
-// });
-
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='4'){
-//         storedValue = 4 + 10*storedValue;
-//         screen.textContent= storedValue;
-//     }
-// });
-
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='5'){
-//         storedValue = 5 + 10*storedValue;
-//         screen.textContent= storedValue;
-//     }
-// });
-
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='6'){
-//         storedValue = 6 + 10*storedValue;
-//         screen.textContent= storedValue;
-//     }
-// });
-
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='7'){
-//         storedValue = 7 + 10*storedValue;
-//         screen.textContent= storedValue;
-//     }
-// });
-
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='8'){
-//         storedValue = 8 + 10*storedValue;
-//         screen.textContent= storedValue;
-//     }
-// });
-
-// window.addEventListener('click', function(e) {
-//     if (e.target.id==='9'){
-//         storedValue = 9 + 10*storedValue;
-//         screen.textContent= storedValue;
-//     }
-// });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
@@ -262,6 +192,11 @@ window.addEventListener('click', function(e) {
             } else if (operate==='x'){
                 screen.textContent= firstNumber * secondNumber;
             } else if (operate==='/'){
+                if (secondNumber===0) {
+                    screen.textContent = 'Man u crazay';
+                    screenSmall.textContent='';
+                    return;
+                } 
                 screen.textContent= firstNumber / secondNumber;
             } else if (operate==='-'){
                 subtract(firstNumber,secondNumber);
@@ -280,6 +215,11 @@ window.addEventListener('click', function(e) {
                 screen.textContent= storedValue * secondNumber;
             }
             if (operate === '/') {
+                if (storedValue===0) {
+                    screen.textContent = 'Man u crazay';
+                    screenSmall.textContent='';
+                    return;
+                } 
                 screen.textContent= secondNumber / storedValue;
             }
         }
@@ -327,3 +267,74 @@ window.addEventListener('click', function(e) {
 // different color from the keypad buttons.
 // EXTRA CREDIT: Add a “backspace” button, so the user can undo if they click the wrong number.
 // EXTRA CREDIT: Add keyboard support!
+
+// Button event listeners
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='0'){
+//         storedValue = 0 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
+
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='1'){
+//         storedValue = 1 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
+
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='2'){
+//         storedValue = 2 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
+
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='3'){
+//         storedValue = 3 + 10*storedValue;
+//         screen.textContent= storedValue;
+// }
+// });
+
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='4'){
+//         storedValue = 4 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
+
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='5'){
+//         storedValue = 5 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
+
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='6'){
+//         storedValue = 6 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
+
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='7'){
+//         storedValue = 7 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
+
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='8'){
+//         storedValue = 8 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
+
+// window.addEventListener('click', function(e) {
+//     if (e.target.id==='9'){
+//         storedValue = 9 + 10*storedValue;
+//         screen.textContent= storedValue;
+//     }
+// });
