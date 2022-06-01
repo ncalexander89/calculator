@@ -136,13 +136,18 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
         operate = '+';
+        //second
         if (firstNumber!=='') {
             secondNumber=storedValue;
             add(firstNumber,secondNumber);
+
+            //first
         } else if (firstNumber==='' && secondNumber==='') {
         screenSmall.textContent= `${storedValue} + ${firstNumber}`;
         firstNumber=storedValue;
         storedValue=0;
+
+        //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
             add(firstNumber,secondNumber);
@@ -153,16 +158,22 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='-'){
         operate='-';
+        
+        //second
         if (firstNumber!=='') {
             secondNumber=storedValue;
             subtract(firstNumber,secondNumber);
+
+            //first
         } else if (firstNumber==='' && secondNumber==='') {
         screenSmall.textContent= `${storedValue} - ${firstNumber}`;
         firstNumber=storedValue;
         storedValue=0;
+
+        //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
-            subtract(firstNumber,secondNumber);
+            subtract(secondNumber,firstNumber);
         }
     }
 });
@@ -196,7 +207,7 @@ window.addEventListener('click', function(e) {
         storedValue=0;
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
-            divide(firstNumber,secondNumber);
+            divide(secondNumber,firstNumber);
         }
     }
 });
@@ -207,9 +218,30 @@ window.addEventListener('click', function(e) {
     }
 });
 
+let count = 0;
 window.addEventListener('click', function(e) {
     if (e.target.id==='='){
+        //figure out double =='s
+        // count++;
+        // if (count>1){
+        //     return;
+        // }
+
         screen.textContent= storedValue;
+        if (firstNumber==='') {
+            if (operate === '+') {
+                screen.textContent= storedValue + secondNumber;
+            }
+            if (operate === '-') {
+                screen.textContent= secondNumber - storedValue;
+            }
+            if (operate === 'x') {
+                screen.textContent= storedValue * secondNumber;
+            }
+            if (operate === '/') {
+                screen.textContent= secondNumber / storedValue;
+            }
+        }
         if (firstNumber!=='') {
             secondNumber=storedValue;
             if (operate==='+'){
