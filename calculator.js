@@ -29,6 +29,11 @@ const operation = function (a,b) {
         storedValue=0;
         return;
     } else if (operate==='/') {
+        if (b===0) {
+            screen.textContent = 'Man u crazay';
+            screenSmall.textContent='';
+            return;
+            } 
         screen.textContent = a/b;
         secondNumber= Number(screen.textContent);
         firstNumber='';
@@ -36,48 +41,6 @@ const operation = function (a,b) {
         return;
     }
 }
-
-//addition operator
-// const add = function (a,b) {
-//     screen.textContent = a+b;
-//     secondNumber= Number(screen.textContent);
-//     firstNumber='';
-//     storedValue=0;
-//     return;
-// }
-
-// //subtraction operator
-// const subtract = function (a,b) {
-//     screen.textContent = a-b;
-//     secondNumber= Number(screen.textContent);
-//     firstNumber='';
-//     storedValue=0;
-//     return;
-// }
-
-//multiplication operator
-// function multiply (a,b) {
-//     screen.textContent = a*b;
-//     secondNumber= Number(screen.textContent);
-//     firstNumber='';
-//     storedValue=0;
-//     return;
-// }
-
-//division operator
-// function divide (a,b) {
-//     //warning if divide by 0;
-//     if (b===0) {
-//         screen.textContent = 'Man u crazay';
-//         screenSmall.textContent='';
-//         return;
-//     } 
-//     screen.textContent = a/b;
-//     secondNumber= Number(screen.textContent);
-//     firstNumber='';
-//     storedValue=0;
-//     return;
-// }
 
 // Clear function resets everything
 window.addEventListener('click', function(e) {
@@ -103,8 +66,7 @@ window.addEventListener('click', function(e) {
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
-        operate = '+';
-            //first
+        //first
         if (firstNumber==='' && secondNumber==='') {
             screenSmall.textContent= `${storedValue} + ${firstNumber}`;
             firstNumber=storedValue;
@@ -113,19 +75,18 @@ window.addEventListener('click', function(e) {
         } else if (firstNumber!=='') {
             secondNumber=storedValue;
             operation(firstNumber, secondNumber);
-            // add(firstNumber,secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
             operation(firstNumber, secondNumber);
         }
+        operate='+';
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='-'){
-        operate='-';
-            //first
+        //first
         if (firstNumber==='' && secondNumber==='') {
             screenSmall.textContent= `${storedValue} - ${firstNumber}`;
             firstNumber=storedValue;
@@ -134,18 +95,17 @@ window.addEventListener('click', function(e) {
         } else if (firstNumber!=='') {
             secondNumber=storedValue;
             operation(firstNumber, secondNumber);
-            // subtract(firstNumber,secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
-            operation(secondNumber, firstNumber);
+            operation(firstNumber, secondNumber);
         }
+        operate='-';
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='x'){
-        operate = 'x';
         //first
         if (firstNumber==='' && secondNumber==='') {
         screenSmall.textContent= `${storedValue} x ${firstNumber}`;
@@ -160,12 +120,12 @@ window.addEventListener('click', function(e) {
             firstNumber=storedValue;
             operation(firstNumber, secondNumber);
         }
+        operate = 'x';
     }
 });
 
 window.addEventListener('click', function(e) {
     if (e.target.id==='/'){
-        operate='/';
         //first
         if (firstNumber==='' && secondNumber==='') {
         screenSmall.textContent= `${storedValue} / ${firstNumber}`;
@@ -180,6 +140,7 @@ window.addEventListener('click', function(e) {
             firstNumber=storedValue;
             operation(secondNumber, firstNumber);
         }
+        operate='/';
     }
 });
 
@@ -207,7 +168,7 @@ window.addEventListener('click', function(e) {
         if (firstNumber!=='') {
             secondNumber=storedValue;
             if (operate==='+'){
-                add(firstNumber,secondNumber);
+                screen.textContent= firstNumber + secondNumber;
             } else if (operate==='x'){
                 screen.textContent= firstNumber * secondNumber;
             } else if (operate==='/'){
@@ -218,7 +179,7 @@ window.addEventListener('click', function(e) {
                 } 
                 screen.textContent= firstNumber / secondNumber;
             } else if (operate==='-'){
-                subtract(firstNumber,secondNumber);
+                screen.textContent= firstNumber - secondNumber;
             }
         }
 
