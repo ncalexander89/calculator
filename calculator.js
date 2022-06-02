@@ -95,7 +95,7 @@ window.addEventListener('click', function(e) {
             storedValue=0;
         //second
         } else if (firstNumber!=='') {
-            screenSmall.textContent= `${firstNumber} - ${storedValue}`;
+            screenSmall.textContent= `${firstNumber} ${operate} ${storedValue}`;
             secondNumber=storedValue;
             operation(firstNumber, secondNumber);
         //third
@@ -161,14 +161,15 @@ window.addEventListener('click', function(e) {
 });
 
 //need to fix double =='s
-let count = 0;
+// let count = 0;
 window.addEventListener('click', function(e) {
     if (e.target.id==='='){
-        //figure out double =='s
-        // count++;
+        // figure out double =='s
         // if (count>1){
+        //     count = 0;
         //     return;
         // }
+        // count++;
 
         screen.textContent= storedValue;
 
@@ -177,17 +178,22 @@ window.addEventListener('click', function(e) {
             secondNumber=storedValue;
             if (operate==='+'){
                 screen.textContent= firstNumber + secondNumber;
+                screenSmall.textContent=`${firstNumber} + ${secondNumber} =`;
             } else if (operate==='x'){
                 screen.textContent= firstNumber * secondNumber;
+                screenSmall.textContent=`${firstNumber} x ${secondNumber} =`;
             } else if (operate==='/'){
                 if (secondNumber===0) {
                     screen.textContent = 'Man u crazay';
                     screenSmall.textContent='';
                     return;
                 } 
-                screen.textContent= firstNumber / secondNumber;
+                screen.textContent= Math.round((firstNumber / secondNumber + Number.EPSILON) * 100) / 100;
+
+                screenSmall.textContent=`${firstNumber} / ${secondNumber} =`;
             } else if (operate==='-'){
                 screen.textContent= firstNumber - secondNumber;
+                screenSmall.textContent=`${firstNumber} - ${secondNumber} =`;
             }
         }
 
@@ -195,12 +201,15 @@ window.addEventListener('click', function(e) {
         if (firstNumber==='') {
             if (operate === '+') {
                 screen.textContent= storedValue + secondNumber;
+                screenSmall.textContent=`${storedValue} + ${secondNumber} =`;
             }
             if (operate === '-') {
                 screen.textContent= secondNumber - storedValue;
+                screenSmall.textContent=`${secondNumber} - ${storedValue} =`;
             }
             if (operate === 'x') {
                 screen.textContent= storedValue * secondNumber;
+                screenSmall.textContent=`${secondNumber} x ${storedValue} =`;
             }
             if (operate === '/') {
                 if (storedValue===0) {
@@ -208,13 +217,15 @@ window.addEventListener('click', function(e) {
                     screenSmall.textContent='';
                     return;
                 } 
-                screen.textContent= secondNumber / storedValue;
+                screen.textContent= Math.round(((secondNumber / storedValue) + Number.EPSILON) * 100) / 100;
+                
+                screenSmall.textContent=`${storedValue} / ${secondNumber} =`;
             }
         }
         //resets
         firstNumber='';
         secondNumber='';
-        storedValue = 0;
+        storedValue = screen.textContent;
     }
 });
 
