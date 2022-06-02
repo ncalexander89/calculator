@@ -8,47 +8,76 @@ let operate='';
 const screen = document.querySelector('#screen');
 const numbers = document.querySelectorAll('.numbers');
 
-//addition operator
-const add = function (a,b) {
-    screen.textContent = a+b;
-    secondNumber= Number(screen.textContent);
-    firstNumber='';
-    storedValue=0;
-    return;
+//operate function
+const operation = function (a,b) {
+    if (operate==='+') {
+        screen.textContent = a+b;
+        secondNumber= Number(screen.textContent);
+        firstNumber='';
+        storedValue=0;
+        return;
+    } else if (operate==='-') {
+        screen.textContent = a-b;
+        secondNumber= Number(screen.textContent);
+        firstNumber='';
+        storedValue=0;
+        return;
+    } else if (operate==='x') {
+        screen.textContent = a*b;
+        secondNumber= Number(screen.textContent);
+        firstNumber='';
+        storedValue=0;
+        return;
+    } else if (operate==='/') {
+        screen.textContent = a/b;
+        secondNumber= Number(screen.textContent);
+        firstNumber='';
+        storedValue=0;
+        return;
+    }
 }
 
-//subtraction operator
-const subtract = function (a,b) {
-    screen.textContent = a-b;
-    secondNumber= Number(screen.textContent);
-    firstNumber='';
-    storedValue=0;
-    return;
-}
+//addition operator
+// const add = function (a,b) {
+//     screen.textContent = a+b;
+//     secondNumber= Number(screen.textContent);
+//     firstNumber='';
+//     storedValue=0;
+//     return;
+// }
+
+// //subtraction operator
+// const subtract = function (a,b) {
+//     screen.textContent = a-b;
+//     secondNumber= Number(screen.textContent);
+//     firstNumber='';
+//     storedValue=0;
+//     return;
+// }
 
 //multiplication operator
-function multiply (a,b) {
-    screen.textContent = a*b;
-    secondNumber= Number(screen.textContent);
-    firstNumber='';
-    storedValue=0;
-    return;
-}
+// function multiply (a,b) {
+//     screen.textContent = a*b;
+//     secondNumber= Number(screen.textContent);
+//     firstNumber='';
+//     storedValue=0;
+//     return;
+// }
 
 //division operator
-function divide (a,b) {
-    //warning if divide by 0; need to fix
-    if (b===0) {
-        screen.textContent = 'Man u crazay';
-        screenSmall.textContent='';
-        return;
-    } 
-    screen.textContent = a/b;
-    secondNumber= Number(screen.textContent);
-    firstNumber='';
-    storedValue=0;
-    return;
-}
+// function divide (a,b) {
+//     //warning if divide by 0;
+//     if (b===0) {
+//         screen.textContent = 'Man u crazay';
+//         screenSmall.textContent='';
+//         return;
+//     } 
+//     screen.textContent = a/b;
+//     secondNumber= Number(screen.textContent);
+//     firstNumber='';
+//     storedValue=0;
+//     return;
+// }
 
 // Clear function resets everything
 window.addEventListener('click', function(e) {
@@ -75,22 +104,20 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='+'){
         operate = '+';
-
             //first
         if (firstNumber==='' && secondNumber==='') {
             screenSmall.textContent= `${storedValue} + ${firstNumber}`;
             firstNumber=storedValue;
             storedValue=0;
-
         //second
         } else if (firstNumber!=='') {
             secondNumber=storedValue;
-            add(firstNumber,secondNumber);
-
+            operation(firstNumber, secondNumber);
+            // add(firstNumber,secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
-            add(firstNumber,secondNumber);
+            operation(firstNumber, secondNumber);
         }
     }
 });
@@ -98,22 +125,20 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='-'){
         operate='-';
-        
             //first
         if (firstNumber==='' && secondNumber==='') {
             screenSmall.textContent= `${storedValue} - ${firstNumber}`;
             firstNumber=storedValue;
             storedValue=0;
-
         //second
         } else if (firstNumber!=='') {
             secondNumber=storedValue;
-            subtract(firstNumber,secondNumber);
-
+            operation(firstNumber, secondNumber);
+            // subtract(firstNumber,secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
-            subtract(secondNumber,firstNumber);
+            operation(secondNumber, firstNumber);
         }
     }
 });
@@ -121,22 +146,19 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='x'){
         operate = 'x';
-
         //first
         if (firstNumber==='' && secondNumber==='') {
         screenSmall.textContent= `${storedValue} x ${firstNumber}`;
         firstNumber=storedValue;
         storedValue=0;
-
         //second
         } else if (firstNumber!=='') {
             secondNumber=storedValue;
-            multiply(firstNumber,secondNumber);
-
+            operation(firstNumber, secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
-            multiply(firstNumber,secondNumber);
+            operation(firstNumber, secondNumber);
         }
     }
 });
@@ -144,22 +166,19 @@ window.addEventListener('click', function(e) {
 window.addEventListener('click', function(e) {
     if (e.target.id==='/'){
         operate='/';
-
         //first
         if (firstNumber==='' && secondNumber==='') {
         screenSmall.textContent= `${storedValue} / ${firstNumber}`;
         firstNumber=storedValue;
         storedValue=0;
-
         //second
         } else if (firstNumber!=='') {
             secondNumber=storedValue;
-            divide(firstNumber,secondNumber);
-
+            operation(firstNumber, secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
             firstNumber=storedValue;
-            divide(secondNumber,firstNumber);
+            operation(secondNumber, firstNumber);
         }
     }
 });
