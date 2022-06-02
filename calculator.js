@@ -73,12 +73,14 @@ window.addEventListener('click', function(e) {
             storedValue=0;
         //second
         } else if (firstNumber!=='') {
+            screenSmall.textContent= `${firstNumber} + ${storedValue}`;
             secondNumber=storedValue;
             operation(firstNumber, secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
+            screenSmall.textContent= `${secondNumber} ${operate} ${storedValue}`;
             firstNumber=storedValue;
-            operation(firstNumber, secondNumber);
+            operation(secondNumber, firstNumber);
         }
         operate='+';
     }
@@ -93,12 +95,14 @@ window.addEventListener('click', function(e) {
             storedValue=0;
         //second
         } else if (firstNumber!=='') {
+            screenSmall.textContent= `${firstNumber} - ${storedValue}`;
             secondNumber=storedValue;
             operation(firstNumber, secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
+            screenSmall.textContent= `${secondNumber} ${operate} ${storedValue}`;
             firstNumber=storedValue;
-            operation(firstNumber, secondNumber);
+            operation(secondNumber, firstNumber);
         }
         operate='-';
     }
@@ -113,12 +117,14 @@ window.addEventListener('click', function(e) {
         storedValue=0;
         //second
         } else if (firstNumber!=='') {
+            screenSmall.textContent= `${firstNumber} x ${storedValue}`;
             secondNumber=storedValue;
             operation(firstNumber, secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
+            screenSmall.textContent= `${secondNumber} ${operate} ${storedValue}`;
             firstNumber=storedValue;
-            operation(firstNumber, secondNumber);
+            operation(secondNumber, firstNumber);
         }
         operate = 'x';
     }
@@ -133,10 +139,12 @@ window.addEventListener('click', function(e) {
         storedValue=0;
         //second
         } else if (firstNumber!=='') {
+            screenSmall.textContent= `${firstNumber} / ${storedValue}`;
             secondNumber=storedValue;
             operation(firstNumber, secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
+            screenSmall.textContent= `${secondNumber} ${operate} ${storedValue}`;
             firstNumber=storedValue;
             operation(secondNumber, firstNumber);
         }
