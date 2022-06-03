@@ -34,7 +34,10 @@ const operation = function (a,b) {
             screenSmall.textContent='';
             return;
             } 
-        screen.textContent = a/b;
+        // screen.textContent = a/b;
+        screen.textContent= Math.round((a / b + Number.EPSILON) * 10000) / 10000;
+
+        // screen.textContent= Math.round((`${a}/${b}` + Number.EPSILON) * 100) / 100;
         secondNumber= Number(screen.textContent);
         firstNumber='';
         storedValue=0;
@@ -140,11 +143,15 @@ window.addEventListener('click', function(e) {
         //second
         } else if (firstNumber!=='') {
             screenSmall.textContent= `${firstNumber} / ${storedValue}`;
+            // screen.textContent= Math.round((`${firstNumber} / ${storedValue}` + Number.EPSILON) * 100) / 100;
+
             secondNumber=storedValue;
             operation(firstNumber, secondNumber);
         //third
         } else if (firstNumber==='' && secondNumber!=='') {
             screenSmall.textContent= `${secondNumber} ${operate} ${storedValue}`;
+            // screen.textContent= Math.round((`${secondNumber} ${operate} ${storedValue}` + Number.EPSILON) * 100) / 100;
+
             firstNumber=storedValue;
             operation(secondNumber, firstNumber);
         }
@@ -188,7 +195,7 @@ window.addEventListener('click', function(e) {
                     screenSmall.textContent='';
                     return;
                 } 
-                screen.textContent= Math.round((firstNumber / secondNumber + Number.EPSILON) * 100) / 100;
+                screen.textContent= Math.round((firstNumber / secondNumber + Number.EPSILON) * 10000) / 10000;
 
                 screenSmall.textContent=`${firstNumber} / ${secondNumber} =`;
             } else if (operate==='-'){
@@ -217,9 +224,9 @@ window.addEventListener('click', function(e) {
                     screenSmall.textContent='';
                     return;
                 } 
-                screen.textContent= Math.round(((secondNumber / storedValue) + Number.EPSILON) * 100) / 100;
+                screen.textContent= Math.round(((secondNumber / storedValue) + Number.EPSILON) * 10000) / 10000;
                 
-                screenSmall.textContent=`${storedValue} / ${secondNumber} =`;
+                screenSmall.textContent=`${secondNumber} / ${storedValue} =`;
             }
         }
         //resets
